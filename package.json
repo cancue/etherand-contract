@@ -1,0 +1,14 @@
+{
+  "name": "etherand-contract",
+  "version": "0.0.1",
+  "scripts": {
+    "build": "truffle migrate --reset",
+    "test": "truffle test",
+    "lint": "solhint contracts/**/*.sol",
+    "dev": "ganache-cli --account \"$(cat privateKey.example),100000000000000000000\" | npm run build"
+  },
+  "devDependencies": {
+    "ganache-cli": "^6.4.1",
+    "truffle": "^5.0.8"
+  }
+}
