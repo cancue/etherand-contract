@@ -3,9 +3,11 @@
   "version": "0.0.1",
   "scripts": {
     "build": "truffle migrate --reset",
+    "deploy": "truffle deploy",
     "test": "truffle test",
     "lint": "solhint contracts/**/*.sol",
-    "dev": "ganache-cli --account \"$(cat privateKey.example),100000000000000000000\" | npm run build"
+    "devGanache": "ganache-cli -i 5777 --account \"$(cat privateKey.example),100000000000000000000\"",
+    "devBuildAndDeploy": "npm run build && truffle deploy"
   },
   "devDependencies": {
     "ganache-cli": "^6.4.1",
