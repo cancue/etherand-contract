@@ -74,7 +74,7 @@ contract EtherandCustomRequest is Committee {
   );
 
   /* FUNCTION */
-  function requestEntrophy(
+  function requestEntropy(
     address _from,
     uint256 _blockCount,
     uint256 _entropyCount
@@ -97,7 +97,7 @@ contract EtherandCustomRequest is Committee {
           requiredEntropyHeight,
           0
         )
-      )
+      ) - 1
     );
 
     emit RequestEntropy(
