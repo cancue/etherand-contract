@@ -152,10 +152,14 @@ contract EtherandCustomRequest is Committee {
       adder += uint256(blockhash(block.number - 1));
       blockHeight += 1;
     }
-    bytes memory b = new bytes(32);
-    assembly { mstore(add(b, 32), adder) }
-    entropy = uint256(keccak256(b));
+    entropy = _hash(adder);
     entropyHeight += 1;
+  }
+
+  function _hash(uint _number) internal pure returns (uint256) {
+    bytes memory b = new bytes(32);
+    assembly { mstore(add(b, 32), _number) }
+    return uint256(keccak256(b));
   }
 }
 
@@ -173,7 +177,7 @@ contract Etherand is EtherandCustomRequest {
   }
 
   function getUnsafeEntropy() external view returns (uint256) {
-    return entropy + block.timestamp;
+    return _hash(entropy + block.timestamp);
   }
 
   function increaseEntropy(uint256 _number) public {
